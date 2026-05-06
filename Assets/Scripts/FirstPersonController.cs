@@ -29,6 +29,11 @@ public class FirstPersonController : MonoBehaviour
 
     private Camera cam;
 
+    private bool beamActive = false;
+    private float beamDamageTimer;
+    public float maxBeamDamageTimer = 0.1f;
+    public GameObject beamAttack;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -52,6 +57,29 @@ public class FirstPersonController : MonoBehaviour
                 heldItem = null;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (beamActive == true)
+            {
+                beamActive = false;;
+            }
+            else if (beamActive == false)
+            {
+                beamActive = true;
+            }
+        }
+
+        if (beamActive == false)
+        {
+            beamAttack.SetActive(false);
+        }
+
+        if (beamActive == true)
+        {
+            beamAttack.SetActive(true);
+        }
+
 
         if (ObjectInFocus() != null)
         {
@@ -77,6 +105,16 @@ public class FirstPersonController : MonoBehaviour
                 {
                     heldItem = ObjectInFocus().GetComponent<ItemScript>();
                     heldItem.PickUp(cam.transform, holdPoint.position);
+                }
+            }
+
+            if (beamActive == true)
+            {
+                if (ObjectInFocus() != platform && ObjectInFocus().GetComponent<BuildingHealthScript>() != null)
+                {
+                    buildingHealth = ObjectInFocus().GetComponent<BuildingHealthScript>();
+                    buildingHealth.health -= 0.01f;
+                    //Destroy(ObjectInFocus());
                 }
             }
         }
@@ -156,5 +194,10 @@ public class FirstPersonController : MonoBehaviour
 
 
         return result;
+    }
+
+    public void BeamAttack()
+    {
+
     }
 }
