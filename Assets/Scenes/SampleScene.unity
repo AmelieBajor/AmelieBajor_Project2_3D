@@ -214283,7 +214283,7 @@ MonoBehaviour:
   maxShakeTimer: 0.2
   stompClip: {fileID: 8300000, guid: cdff7c308b0f4fb488bbe8ce9b41b0af, type: 3}
   shootClip: {fileID: 8300000, guid: d8d5483fd8e597948827927692c51353, type: 3}
-  beamClip: {fileID: 8300000, guid: 3421136c3416988478fffbcfe46bd3ee, type: 3}
+  beamClip: {fileID: 8300000, guid: e5338807e1b2e6c42b20076f05de321f, type: 3}
   maxBeamDamageTimer: 0.5
   beamAttack: {fileID: 1840892733}
 --- !u!4 &1718040788
